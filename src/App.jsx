@@ -1,7 +1,12 @@
-import Hangman from './hangman'
+import React from 'react';
+import Home from './home'
+
+
+
 
 function App() {
-  return <Hangman word='Capibara'/>
+  return <Home/>;
+
 }
 
 export default App;
