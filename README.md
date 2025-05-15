@@ -1,12 +1,45 @@
-# React + Vite
+# Hangman
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="src/assets/login.png" alt="Login" width="500"/>
+<img src="src/assets/planner.png" alt="Login" width="500"/>
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A fun hangman game made with React, Vite, TailwindCSS, and Framer Motion.
+You guess letters to find the hidden word before you run out of tries. 
+The game has animations to make it more fun.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Features:**
+- Guess one letter at a time
+- Hangman picture changes when you guess wrong
+- Win animation when you find the word
+- Shake effect on hangman picture when you guess wrong
+- Shows the category of the word
+- Buttons to play again or go back home
+- Clean design with TailwindCSS
+- Smooth animations with Framer Motion
+
+**Technologies:**
+- React
+- Vite
+- Tailwind CSS
+- Framer Motion
+
+## How to run weekly planner
+
+Follow the steps:
+
+- **Node.js**: A JavaScript runtime that is required to run the app. [Download Node.js](https://nodejs.org/)
+- Clone the repository
+   ```bash
+   git clone https://github.com/username/repository-name.git
+- Access repository-name
+    ```bash
+   cd Hangman
+- Install dependencies 
+    ```bash
+   npm install 
+- Run app 
+    ```bash
+    npm run dev   
+Made with 💜 by Dyane Albuquerque 

@@ -7,8 +7,20 @@ import hangman2 from './assets/hangman2.png';
 import hangman3 from './assets/hangman3.png';
 import hangman4 from './assets/hangman4.png';
 import hangman5 from './assets/hangman5.png';
+import { motion } from "framer-motion";
 
 
+function Won ({win}) {
+  return (
+    <motion.img
+    src={win} alt="You won!"  className="fixed top-40 right-40 w-[180px] h-[180px]"
+    initial={{opacity: 0, scale:0.5, rotate: -10}}
+    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+    transition={{ duration: 0.6, ease: "easeOut", type: "spring", stiffness: 100 }}
+    />
+  );
+}
+ 
 
 function Hangman ({ word, onPlayAgain, onReturnHome }) {
   const [InputGuess, setInputGuess] = useState("");
@@ -18,6 +30,20 @@ function Hangman ({ word, onPlayAgain, onReturnHome }) {
   const [wrongLetter, setWrongLetter] = useState ([]);
   const [guessAttempts, setGuessAttempts] = useState ((5));
   const [category, setCategory] = useState(word.category);
+  const [shaking, setSheking] = useState(false);
+
+  useEffect (() => {
+    if (guessAttempts < 5) {
+      setSheking (true);
+      const timeout = setTimeout(() => setSheking(false), 400);
+      return () => clearTimeout(timeout)
+    }
+  }, [guessAttempts])
+
+  const shake = {
+    x: [0, -10, 10, -10, 10, 0],
+    transition: { duration: 0.4, ease: "easeInOut" },
+  }
 
   useEffect (() => {
     setInputGuess("");
@@ -67,16 +93,24 @@ function Hangman ({ word, onPlayAgain, onReturnHome }) {
   const hasLost = guessAttempts <= 0;
   const hangmanImages = [hangman0, hangman1, hangman2, hangman3, hangman4, hangman5];
 
-   
   return (
     <div className="min-h-screen justify-center items-center flex flex-col text-center">
     <h1 className="text-4xl text-[#8C62A4] font-bold mb-10">Hangman</h1>
-    {hasWon ? (
-        <img src={win} alt="You won!" className="w-32 h-32"/>
+
+    {hasWon  ? (
+      <Won win={win}/>
     ) : (
-      <img src={hangmanImages [5 - guessAttempts]} alt="Hangman" className="w-32 h-32" />
+      <motion.img src={hangmanImages[5 - guessAttempts]}
+      alt="hangman"
+      className="fixed top-40 right-40 w-[180px] h-[180px]"
+      animate={shaking ? shake : {x: 0}} 
+      />
     )}
-    <p className="text-lg mt-4 font-semibold"> Category: <span className="capitalize">{word.category}</span></p>
+        
+    <p className="text-lg mt-4 font-semibold"> Category: 
+      <span className="capitalize">{word.category}</span>
+    </p>
+
     <p className="text-xl"> 
         {word.word.split('').map((letter, index) =>
         correctLetter.includes(letter) ? (
@@ -87,18 +121,21 @@ function Hangman ({ word, onPlayAgain, onReturnHome }) {
     )}
     </p>
 
-    <input type="text" maxLength="1" value={InputGuess} onChange={(e) => setInputGuess(e.target.value)}       className="mt-4 border-[#8C62A4] border rounded p-2 w-10 bg-white text-black focus:outline-none 
+    <input type="text" maxLength="1" value={InputGuess} onChange={(e) => setInputGuess(e.target.value)}    
+       className="mt-4 border-[#8C62A4] border rounded p-2 w-10 bg-white text-black focus:outline-none 
       focus:ring-2 focus:ring-[#8C62A4]"/>
+
     <button onClick={HandleGuess} className='mb-4 mt-4 cursor-pointer hover:bg-[#8C62A4] bg-[#D0B0DF]
      text-white font-bold py-2 px-4 rounded'>
       Guess
     </button>
+
     {result && (
        <p className={`m-4 font-bold fixed top-80 right-10
         ${resultType === "EnterLetter" ? "text-red-400" : "" }
         ${resultType === "OnlyLetter" ? "text-red-400" : "" }
         ${resultType === "gessed" ? "text-red-400" : "" }
-        ${resultType === "inWord" ? "text-red-400" : "" }
+        ${resultType === "inWord" ? "text-green-400" : "" }
         ${resultType === "notInWord" ? "text-red-400" : "" }
        `}
       >{result}</p>
@@ -107,18 +144,23 @@ function Hangman ({ word, onPlayAgain, onReturnHome }) {
     <p className="fixed top-80 left-5">Wrong guess: 
       <span className="font-bold text-red-600">{wrongLetter.join("- ")}</span>
     </p> 
-    <p className="fixed top-85 left-5">Attempts left: <span className="font-bold text-red-600">{guessAttempts}</span></p>
+    
+    <p className="fixed top-85 left-5">Attempts left: <span className="font-bold
+     text-red-600">{guessAttempts}</span>
+     </p>
 
-    {hasWon && <p className="font-bold">🎉 You won! <p>Congratulations!</p></p>}
-    {hasLost && <p className="font-bold">🩻 You lose! The word was: {word.word}</p>}
+    {hasWon && <p className="font-bold">🎉 You won! Congratulations!</p>}
+    {hasLost && <p className="font-bold">🩻 You lose! The word was: <span className="text-green-400">{word.word}</span></p>}
 
     {(hasWon || hasLost) && (
-      <button onClick={onPlayAgain} className=" mt-4 cursor-pointer hover:bg-[#8c62a4] bg-[#D0B0DF]
+      <button onClick={onPlayAgain} className=" mt-4 cursor-pointer
+       hover:bg-[#8c62a4] bg-[#D0B0DF]
           text-white font-bold py-2 px-4 rounded">
           Play Again
       </button>
     )}
-        <button onClick={onReturnHome} className="fixed top-4 left-4 cursor-pointer hover:bg-[#8c62a4] bg-[#D0B0DF] rounded py-3 px-5">
+        <button onClick={onReturnHome} className="fixed top-4 left-4 cursor-pointer
+         hover:bg-[#8c62a4] bg-[#D0B0DF] rounded py-3 px-5">
                 🏠
         </button>
     </div> 

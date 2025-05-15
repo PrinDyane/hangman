@@ -60,7 +60,7 @@ function Home() {
         <div className= "min-h-screen justify-center items-center flex flex-col text-center">
           <h1 className='text-4xl font-bold text-[#8C62A4]'>Let's play Hangman!</h1>
           <img src={mascote} alt="Welcome!" className='w-32 h-32'/>
-          <h2 className='text-[#8C62A4] font-bold'>Select difficulty level</h2>
+          <h2 className='text-green-600 font-bold'>Select difficulty level</h2>
           <div className='flex space-x-4 p-4 mt-2'>
             <button onClick={() => startGame("easy")} className='cursor-pointer hover:bg-[#8C62A4] bg-[#D0B0DF] text-white font-bold py-2 px-4 rounded'>Easy</button>
             <button onClick={() => startGame("medium")} className='cursor-pointer hover:bg-[#8C62A4] bg-[#D0B0DF] text-white font-bold py-2 px-4 rounded'>Medium</button>
