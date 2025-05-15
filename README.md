@@ -25,7 +25,7 @@ The game has animations to make it more fun.
 - Tailwind CSS
 - Framer Motion
 
-## How to run weekly planner
+## How to play hangman
 
 Follow the steps:
 
