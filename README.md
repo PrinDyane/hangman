@@ -1,7 +1,7 @@
 # Hangman
 
-<img src="src/assets/login.png" alt="Login" width="500"/>
-<img src="src/assets/planner.png" alt="Login" width="500"/>
+<img src="src/assets/home.png" alt="Login" width="500"/>
+<img src="src/assets/hangman.png" alt="Login" width="500"/>
 
 
 A fun hangman game made with React, Vite, TailwindCSS, and Framer Motion.
