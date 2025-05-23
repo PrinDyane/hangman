@@ -64,7 +64,7 @@ function Home() {
           <div className='flex space-x-4 p-4 mt-2'>
             <button onClick={() => startGame("easy")} className='cursor-pointer hover:bg-[#8C62A4] bg-[#D0B0DF] text-white font-bold py-2 px-4 rounded'>Easy</button>
             <button onClick={() => startGame("medium")} className='cursor-pointer hover:bg-[#8C62A4] bg-[#D0B0DF] text-white font-bold py-2 px-4 rounded'>Medium</button>
-            <button onClick={() => startGame("hard")} className='cursor-pointer hover:bg-[#8C62A4] bg-[#D0B0DF] text-white font-bold py-2 px-4 rounded'>Hard</button>
+            <button onClick={() => startGame("hard")} className='cursor-pointer hover:bg-[#0c090e] bg-[#D0B0DF] text-white font-bold py-2 px-4 rounded'>Hard</button>
           </div>
         </div>
       ) : (

@@ -25,17 +25,17 @@ The game has animations to make it more fun.
 - Tailwind CSS
 - Framer Motion
 
-## How to run weekly planner
+## How to play hangman
 
 Follow the steps:
 
 - **Node.js**: A JavaScript runtime that is required to run the app. [Download Node.js](https://nodejs.org/)
 - Clone the repository
    ```bash
-   git clone https://github.com/username/repository-name.git
+   git clone https://github.com/PrinDyane/hangman
 - Access repository-name
     ```bash
-   cd Hangman
+   cd hangman
 - Install dependencies 
     ```bash
    npm install 
